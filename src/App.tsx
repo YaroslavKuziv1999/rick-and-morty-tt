@@ -4,7 +4,7 @@ import './styles/global.css'
 
 const App = () => {
     return (
-        <div style={{backgroundColor: "rgb(36, 40, 47)"}}>
+        <div>
             <Characters/>
         </div>
     );

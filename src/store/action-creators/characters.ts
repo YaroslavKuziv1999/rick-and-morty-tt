@@ -11,7 +11,7 @@ export const fetchCharacters = (): any => {
             }
             const res = await axios.get('https://rickandmortyapi.com/api/character', {params});
             console.log(res);
-            dispatch({type: charactersActionType.FETCH_CHARACTERS_SUCCESS, payload: res.data});
+            dispatch({type: charactersActionType.FETCH_CHARACTERS_SUCCESS, payload: res.data.results});
         } catch (e) {
             dispatch({type: charactersActionType.FETCH_CHARACTERS_ERROR, payload: 'Error'});
         }
