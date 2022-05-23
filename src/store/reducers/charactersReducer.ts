@@ -3,17 +3,20 @@ import {charactersActionType} from "../../types/characters";
 const defaultState: any = {
     characters: [],
     loading: false,
+    page: 1,
     error: null
 }
 
 export const charactersReducer = (state = defaultState, action: any): any => {
     switch (action.type) {
         case charactersActionType.FETCH_CHARACTERS:
-            return {loading: true, error: null, characters: []};
+            return {...state, loading: true};
         case charactersActionType.FETCH_CHARACTERS_SUCCESS:
-            return {loading: false, error: null, characters: action.payload};
+            return {...state, loading: false, characters: action.payload};
         case charactersActionType.FETCH_CHARACTERS_ERROR:
-            return {loading: false, error: action.payload, characters: []}
+            return {...state, loading: false, error: action.payload}
+        case charactersActionType.SET_CHARACTERS_PAGE:
+            return {...state, loading: false, page: action.payload};
         default:
             return state;
     }

@@ -7,13 +7,25 @@ import {Box, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui
 import img from '../img/main-logo.png'
 
 const Characters: React.FC = () => {
-    const {fetchCharacters} = useActions()
-    const {characters} = useTypedSelector(state => state.characters);
-    console.log('Prop', characters);
+    const {fetchCharacters, setCharactersPage} = useActions()
+    const {characters, loading, error, page} = useTypedSelector(state => state.characters);
+    console.log('Prop', characters, loading, page);
 
     useEffect(() => {
-        fetchCharacters()
-    }, [])
+        fetchCharacters(page)
+    }, [page])
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setCharactersPage(value);
+    };
+
+    if (loading) {
+        return <h1>Loading..</h1>
+    }
+
+    if (error) {
+        return <h1>Error</h1>
+    }
 
     const theme = createTheme({
         palette: {
@@ -35,7 +47,7 @@ const Characters: React.FC = () => {
                             maxHeight: {xs: 450, md: 450},
                             maxWidth: {xs: 450, md: 450},
                         }}
-                        alt="The house from the offer."
+                        alt="Rick and morty"
                         src={img}
                     />
                 </div>
@@ -54,7 +66,7 @@ const Characters: React.FC = () => {
                 }
                 {/*Footer*/}
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                    <Pagination count={10} color="primary" size="large"/>
+                    <Pagination count={42} page={page} onChange={handleChange} color="primary" size="large"/>
                 </div>
             </ThemeProvider>
         </Container>
