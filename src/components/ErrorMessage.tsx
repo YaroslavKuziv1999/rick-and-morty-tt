@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 const ErrorMessage = (props: any) => {
     return (
         <Typography sx={{
-            textAlign: 'center', color: 'red', fontSize: "25px", textTransform: 'uppercase',
+            textAlign: 'center', color: 'red', fontSize: "26px", textTransform: 'uppercase',
             fontFamily: "Roboto"
         }}>
             {props.error}
