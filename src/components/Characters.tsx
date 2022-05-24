@@ -9,7 +9,7 @@ import CharactersFilter from "./CharactersFilter";
 
 const Characters: React.FC = () => {
     const {setCharactersPage} = useActions()
-    const {characters, loading, error, page, totalPagesCount} = useTypedSelector(state => state.characters);
+    const {characters, page, totalPagesCount} = useTypedSelector(state => state.characters);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCharactersPage(value);
