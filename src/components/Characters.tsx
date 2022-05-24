@@ -9,7 +9,6 @@ import img from '../img/main-logo.png'
 const Characters: React.FC = () => {
     const {fetchCharacters, setCharactersPage} = useActions()
     const {characters, loading, error, page} = useTypedSelector(state => state.characters);
-    console.log('Prop', characters, loading, page);
 
     useEffect(() => {
         fetchCharacters(page)

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Card, CardActions, CardContent, Tooltip, Typography} from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
-import Button from "@mui/material/Button";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
+import PopupDialog from "./PopupDialog";
 
 const getStatusIcon = (status: any) => {
     switch (status) {
@@ -18,6 +18,16 @@ const getStatusIcon = (status: any) => {
 }
 
 const CharacterCard = (props: any): any => {
+    const [open, setOpen] = useState(false)
+
+    function onCloseModal() {
+        setOpen(false);
+    }
+
+    const onOpenModal = () => {
+        setOpen(true);
+    }
+
     return (
         <Card sx={{maxWidth: 345}}>
             <CardMedia
@@ -26,11 +36,13 @@ const CharacterCard = (props: any): any => {
                 alt={props.name}
             />
             <CardContent>
-                <Typography sx={{display: "flex", alignItems: 'center', textTransform: 'capitalize'}} component={'div'}>
+                <Typography sx={{display: "flex", alignItems: 'center', textTransform: 'capitalize'}}
+                            component={'div'}>
                     <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column'}} variant={'h5'}>
                         {props.name}
                         <Tooltip title="Gender" placement="bottom">
-                            <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary" component={'p'}
+                            <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"
+                                        component={'p'}
                                         variant={'body2'}>
                                 {props.gender}
                             </Typography>
@@ -48,7 +60,7 @@ const CharacterCard = (props: any): any => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <PopupDialog setCloseModal={onCloseModal} setOpenModal={onOpenModal} openState={open} {...props}/>
             </CardActions>
         </Card>
     );
