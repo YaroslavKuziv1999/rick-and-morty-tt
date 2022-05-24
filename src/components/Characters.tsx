@@ -2,15 +2,13 @@ import React from 'react';
 import {useActions} from "../hooks/useActions";
 import CharacterCard from "./CharacterCard";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import {CardMedia, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui/material";
+import {Grid, Pagination} from "@mui/material";
 // @ts-ignore
 import img from '../img/main-logo.png'
-import CharactersFilter from "./CharactersFilter";
-import {Link} from "react-router-dom";
-import NavBar from "./NavBar";
+import Header from "./Header";
 
 const Characters: React.FC = () => {
-    const {setCharactersPage, fetchCharacters} = useActions()
+    const {setCharactersPage} = useActions()
     const {characters, page, totalPagesCount} = useTypedSelector(state => state.characters);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -25,57 +23,28 @@ const Characters: React.FC = () => {
     //     return <h1>Error</h1>
     // }
 
-    const theme = createTheme({
-        palette: {
-            mode: 'dark',
-            primary: {
-                main: '#2B9145'
-            },
-        },
-    });
-
     return (
-        <Container maxWidth="lg">
-            <ThemeProvider theme={theme}>
-                {/*Header*/}
-                <div style={{display: 'flex', justifyContent: 'center', marginBottom: "30px", cursor: "pointer"}}>
-                    <Link to="/">
-                        <CardMedia
-                            onClick={() => fetchCharacters(1)}
-                            component="img"
-                            sx={{
-                                maxHeight: {xs: 600, md: 600},
-                                maxWidth: {xs: 600, md: 600},
-                            }}
-                            alt="Rick and morty"
-                            src={img}
-                        />
-                    </Link>
-                </div>
-                <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <NavBar/>
-                    <CharactersFilter/>
-                </div>
-                {/*Body*/}
-                {
-                    characters.length > 0 ?
-                        <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
-                            {characters.map((character: any) => (
-                                <Grid item xs={2} sm={4} md={4} key={character.id}>
-                                    <CharacterCard {...character} key={character.id}/>
-                                </Grid>
-                            ))}
-                        </Grid>
-                        :
-                        'None'
-                }
-                {/*Footer*/}
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                    <Pagination count={totalPagesCount} page={page} onChange={handleChange} color="primary"
-                                size="large"/>
-                </div>
-            </ThemeProvider>
-        </Container>
+        <div>
+            {/*Header*/}
+            <Header filter={true}/>
+            {/*Body*/}
+            {
+                characters.length > 0 ?
+                    <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
+                        {characters.map((character: any) => (
+                            <Grid item xs={2} sm={4} md={4} key={character.id}>
+                                <CharacterCard {...character} key={character.id}/>
+                            </Grid>
+                        ))}
+                    </Grid>
+                    :
+                    'None'
+            }
+            {/*Footer*/}
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+                <Pagination count={totalPagesCount} page={page} onChange={handleChange} color="primary" size="large"/>
+            </div>
+        </div>
     );
 };
 

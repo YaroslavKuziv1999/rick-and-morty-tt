@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {CardMedia} from "@mui/material";
+import {Box, CardMedia} from "@mui/material";
 // @ts-ignore
 import img from "../img/main-logo.png";
 import NavBar from "./NavBar";
@@ -11,7 +11,12 @@ const Header = (props: any) => {
     const {fetchCharacters} = useActions()
     return (
         <div>
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: "30px", cursor: "pointer"}}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginBottom: "30px",
+                cursor: "pointer",
+            }}>
                 <Link to="/">
                     <CardMedia
                         onClick={() => fetchCharacters(1)}
@@ -25,10 +30,14 @@ const Header = (props: any) => {
                     />
                 </Link>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
+            <Box sx={{
+                display: "flex",
+                justifyContent: props.filter ? "space-between" : 'center',
+                mt: props.filter ? 0 : 6
+            }}>
                 <NavBar/>
                 {props.filter && <CharactersFilter/>}
-            </div>
+            </Box>
         </div>
     );
 };
