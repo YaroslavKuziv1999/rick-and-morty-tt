@@ -1,11 +1,11 @@
 import React from 'react';
-import {useActions} from "../hooks/useActions";
+import {useActions} from "../../hooks/useActions";
 import CharacterCard from "./CharacterCard";
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Grid, Pagination} from "@mui/material";
 // @ts-ignore
-import img from '../img/main-logo.png'
-import Header from "./Header";
+import img from '../../assets/img/main-logo.png';
+import Header from "../Header";
 
 const Characters: React.FC = () => {
     const {setCharactersPage} = useActions()
@@ -14,14 +14,6 @@ const Characters: React.FC = () => {
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCharactersPage(value);
     };
-
-    // if (loading) {
-    //     return <h1>Loading..</h1>
-    // }
-    //
-    // if (error) {
-    //     return <h1>Error</h1>
-    // }
 
     return (
         <div>

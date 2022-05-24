@@ -5,7 +5,7 @@ import '../styles/style.css'
 
 const NavBar = () => {
     return (
-        <Box sx={{display:"flex", flexWrap: 'wrap', alignItems: 'center'}}>
+        <Box sx={{display: "flex", flexWrap: 'wrap', alignItems: 'center'}}>
             <Link to="/" className="navBarText" style={{marginRight: 20}}>
                 Characters
             </Link>

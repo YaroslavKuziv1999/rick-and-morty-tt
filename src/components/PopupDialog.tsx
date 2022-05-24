@@ -67,7 +67,7 @@ export default function PopupDialog(props: any) {
                             component="img"
                             src={props.image}
                             alt={props.name}
-                            sx={{borderRadius: '50%', width:"50%", minWidth: 150}}
+                            sx={{borderRadius: '50%', width: "50%", minWidth: 150}}
                         />
                         <Box
                             sx={{
@@ -81,33 +81,37 @@ export default function PopupDialog(props: any) {
                                         variant={'h4'}>
                                 {props.name}
                             </Typography>
-                            <Typography  variant={'h5'}>
+                            <Typography variant={'h5'}>
                                 Gender
-                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}}
+                                            color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.gender}
                                 </Typography>
                             </Typography>
-                            <Typography  variant={'h5'}>
+                            <Typography variant={'h5'}>
                                 Species
-                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}}
+                                            color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.species}
                                 </Typography>
                             </Typography>
-                            <Typography  variant={'h5'}>
+                            <Typography variant={'h5'}>
                                 Location
-                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}}
+                                            color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.location.name}
                                 </Typography>
                             </Typography>
-                            <Typography  variant={'h5'}>
+                            <Typography variant={'h5'}>
                                 Status
-                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}}
+                                            color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.status}
@@ -117,7 +121,7 @@ export default function PopupDialog(props: any) {
                     </div>
 
                 </DialogContent>
-                <DialogActions >
+                <DialogActions>
                     <Button onClick={props.setCloseModal}>
                         OK
                     </Button>

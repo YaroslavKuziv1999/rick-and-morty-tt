@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
-import {charactersFilterBy} from "../types/characters";
-import {useActions} from "../hooks/useActions";
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import {charactersFilterBy} from "../../types/characters";
+import {useActions} from "../../hooks/useActions";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 const CharactersFilter = () => {
     const [filter, setFilter] = React.useState('');
@@ -17,6 +17,7 @@ const CharactersFilter = () => {
 
     useEffect(() => {
         filter && value ? fetchCharacters(page, filter, value) : fetchCharacters(page);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page])
 
     const handleChangeSelect = (event: SelectChangeEvent) => {
@@ -62,7 +63,8 @@ const CharactersFilter = () => {
                     <MenuItem value={charactersFilterBy.STATUS}>{charactersFilterBy.STATUS}</MenuItem>
                 </Select>
             </FormControl>
-            <TextField error={error} helperText={error ? 'Choose filter and fill the search field!' : ''} sx={{mr: 2, mb: 2}} id="outlined-basic"
+            <TextField error={error} helperText={error ? 'Choose filter and fill the search field!' : ''}
+                       sx={{mr: 2, mb: 2}} id="outlined-basic"
                        label="Search..." variant="outlined" onKeyDown={handleKeyDown}
                        onChange={handleChangeInput}/>
             <Button sx={{height: 56, mb: 2}} onClick={handleSearch} variant="contained" size="medium" color="success">

@@ -1,6 +1,6 @@
-import {watchListActionType} from "../../types/watchList";
+import {SeriesType, watchListActionType} from "../../types/watchList";
 
-export const addToWatchList = (series: any): any => {
+export const addToWatchList = (series: SeriesType): any => {
     return {type: watchListActionType.ADD_SERIES, payload: series}
 }
 

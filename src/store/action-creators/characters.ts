@@ -2,10 +2,9 @@ import {Dispatch} from "redux";
 import axios from "axios";
 import {charactersActionType} from "../../types/characters";
 
-export const fetchCharacters = (page = 1, filter: string = '', search: string = '',): any => {
+export const fetchCharacters = (page = 1, filter = '', search = '',): any => {
     return async (dispatch: Dispatch<any>) => {
         try {
-            dispatch({type: charactersActionType.FETCH_CHARACTERS});
             const params = {
                 page
             }

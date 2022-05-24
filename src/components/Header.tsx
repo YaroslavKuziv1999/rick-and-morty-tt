@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Box, CardMedia} from "@mui/material";
 // @ts-ignore
-import img from "../img/main-logo.png";
+import img from "../assets/img/main-logo.png";
 import NavBar from "./NavBar";
-import CharactersFilter from "./CharactersFilter";
+import CharactersFilter from "./Characters/CharactersFilter";
 import {useActions} from "../hooks/useActions";
 
 const Header = (props: any) => {

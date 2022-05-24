@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
-import PopupDialog from "./PopupDialog";
+import PopupDialog from "../PopupDialog";
 
 const getStatusIcon = (status: any) => {
     switch (status) {
@@ -38,7 +38,8 @@ const CharacterCard = (props: any): any => {
             <CardContent>
                 <Typography sx={{display: "flex", flexWrap: 'wrap', alignItems: 'center', textTransform: 'capitalize'}}
                             component={'div'}>
-                    <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column', maxWidth: 200}} variant={'h5'}>
+                    <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column', maxWidth: 200}}
+                                variant={'h5'}>
                         {props.name}
                         <Tooltip title="Gender" placement="bottom">
                             <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"

@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "./Header";
+import Header from "../Header";
 import {Box, Button, TextField} from "@mui/material";
-import {useActions} from "../hooks/useActions";
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useActions} from "../../hooks/useActions";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 import SeriesList from "./SeriesList";
 import cuid from "cuid";
 

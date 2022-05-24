@@ -1,8 +1,8 @@
 import React from 'react';
-import Characters from "./components/Characters";
+import Characters from "./components/Characters/Characters";
 import './styles/style.css'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import WatchList from "./components/WatchList";
+import WatchList from "./components/WatchList/WatchList";
 import {Container, createTheme, ThemeProvider} from "@mui/material";
 
 const App = () => {

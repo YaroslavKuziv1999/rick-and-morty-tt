@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {useActions} from "../hooks/useActions";
+import {useActions} from "../../hooks/useActions";
 
 export default function SeriesList(props: any) {
     const [checked, setChecked] = React.useState([0]);
