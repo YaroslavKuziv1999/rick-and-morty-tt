@@ -2,13 +2,15 @@ import React from 'react';
 import {useActions} from "../hooks/useActions";
 import CharacterCard from "./CharacterCard";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import { CardMedia, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui/material";
+import {CardMedia, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui/material";
 // @ts-ignore
 import img from '../img/main-logo.png'
 import CharactersFilter from "./CharactersFilter";
+import {Link} from "react-router-dom";
+import NavBar from "./NavBar";
 
 const Characters: React.FC = () => {
-    const {setCharactersPage} = useActions()
+    const {setCharactersPage, fetchCharacters} = useActions()
     const {characters, page, totalPagesCount} = useTypedSelector(state => state.characters);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -36,18 +38,22 @@ const Characters: React.FC = () => {
         <Container maxWidth="lg">
             <ThemeProvider theme={theme}>
                 {/*Header*/}
-                <div style={{display: 'flex', justifyContent: 'center', marginBottom: "30px"}}>
-                    <CardMedia
-                        component="img"
-                        sx={{
-                            maxHeight: {xs: 600, md: 600},
-                            maxWidth: {xs: 600, md: 600},
-                        }}
-                        alt="Rick and morty"
-                        src={img}
-                    />
+                <div style={{display: 'flex', justifyContent: 'center', marginBottom: "30px", cursor: "pointer"}}>
+                    <Link to="/">
+                        <CardMedia
+                            onClick={() => fetchCharacters(1)}
+                            component="img"
+                            sx={{
+                                maxHeight: {xs: 600, md: 600},
+                                maxWidth: {xs: 600, md: 600},
+                            }}
+                            alt="Rick and morty"
+                            src={img}
+                        />
+                    </Link>
                 </div>
-                <div>
+                <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <NavBar/>
                     <CharactersFilter/>
                 </div>
                 {/*Body*/}

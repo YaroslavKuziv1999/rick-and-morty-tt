@@ -38,7 +38,7 @@ const CharacterCard = (props: any): any => {
             <CardContent>
                 <Typography sx={{display: "flex", flexWrap: 'wrap', alignItems: 'center', textTransform: 'capitalize'}}
                             component={'div'}>
-                    <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column'}} variant={'h5'}>
+                    <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column', maxWidth: 200}} variant={'h5'}>
                         {props.name}
                         <Tooltip title="Gender" placement="bottom">
                             <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"
