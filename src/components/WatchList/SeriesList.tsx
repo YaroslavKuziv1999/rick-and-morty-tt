@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useActions} from "../../hooks/useActions";
+import ErrorMessage from "../ErrorMessage";
 
 export default function SeriesList(props: any) {
     const [checked, setChecked] = React.useState([0]);
@@ -70,9 +71,7 @@ export default function SeriesList(props: any) {
         );
     } else {
         return (
-            <div>
-                None
-            </div>
+            <ErrorMessage error="No series was added! Pls, enter the series."/>
         )
     }
 }
