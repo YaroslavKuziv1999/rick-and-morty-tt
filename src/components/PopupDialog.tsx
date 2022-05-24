@@ -8,7 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import {Box} from "@mui/material";
+import {Box, CardMedia} from "@mui/material";
 
 const BootstrapDialog = styled(Dialog)(({theme}) => ({
     '& .MuiDialogContent-root': {
@@ -62,12 +62,12 @@ export default function PopupDialog(props: any) {
             >
                 <BootstrapDialogTitle id="customized-dialog-title" onClose={props.setCloseModal}/>
                 <DialogContent>
-                    <div style={{display: 'flex'}}>
-                        <Box
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        <CardMedia
                             component="img"
                             src={props.image}
                             alt={props.name}
-                            sx={{borderRadius: '50%', p: 2}}
+                            sx={{borderRadius: '50%', width:"50%", minWidth: 150}}
                         />
                         <Box
                             sx={{
@@ -83,7 +83,7 @@ export default function PopupDialog(props: any) {
                             </Typography>
                             <Typography  variant={'h5'}>
                                 Gender
-                                <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.gender}
@@ -91,7 +91,7 @@ export default function PopupDialog(props: any) {
                             </Typography>
                             <Typography  variant={'h5'}>
                                 Species
-                                <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.species}
@@ -99,7 +99,7 @@ export default function PopupDialog(props: any) {
                             </Typography>
                             <Typography  variant={'h5'}>
                                 Location
-                                <Typography sx={{display: "flex", fontSize: 'small'}} color="text.secondary"
+                                <Typography sx={{display: "flex", fontSize: 'small', textTransform: 'capitalize'}} color="text.secondary"
                                             component={'p'}
                                             variant={'body2'}>
                                     {props.location.name}

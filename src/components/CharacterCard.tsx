@@ -36,7 +36,7 @@ const CharacterCard = (props: any): any => {
                 alt={props.name}
             />
             <CardContent>
-                <Typography sx={{display: "flex", alignItems: 'center', textTransform: 'capitalize'}}
+                <Typography sx={{display: "flex", flexWrap: 'wrap', alignItems: 'center', textTransform: 'capitalize'}}
                             component={'div'}>
                     <Typography sx={{display: "flex", alignItems: 'start', flexDirection: 'column'}} variant={'h5'}>
                         {props.name}

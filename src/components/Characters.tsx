@@ -1,30 +1,27 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useActions} from "../hooks/useActions";
 import CharacterCard from "./CharacterCard";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import {Box, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui/material";
+import { CardMedia, Container, createTheme, Grid, Pagination, ThemeProvider} from "@mui/material";
 // @ts-ignore
 import img from '../img/main-logo.png'
+import CharactersFilter from "./CharactersFilter";
 
 const Characters: React.FC = () => {
-    const {fetchCharacters, setCharactersPage} = useActions()
-    const {characters, loading, error, page} = useTypedSelector(state => state.characters);
-
-    useEffect(() => {
-        fetchCharacters(page)
-    }, [page])
+    const {setCharactersPage} = useActions()
+    const {characters, loading, error, page, totalPagesCount} = useTypedSelector(state => state.characters);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCharactersPage(value);
     };
 
-    if (loading) {
-        return <h1>Loading..</h1>
-    }
-
-    if (error) {
-        return <h1>Error</h1>
-    }
+    // if (loading) {
+    //     return <h1>Loading..</h1>
+    // }
+    //
+    // if (error) {
+    //     return <h1>Error</h1>
+    // }
 
     const theme = createTheme({
         palette: {
@@ -40,15 +37,18 @@ const Characters: React.FC = () => {
             <ThemeProvider theme={theme}>
                 {/*Header*/}
                 <div style={{display: 'flex', justifyContent: 'center', marginBottom: "30px"}}>
-                    <Box
+                    <CardMedia
                         component="img"
                         sx={{
-                            maxHeight: {xs: 450, md: 450},
-                            maxWidth: {xs: 450, md: 450},
+                            maxHeight: {xs: 600, md: 600},
+                            maxWidth: {xs: 600, md: 600},
                         }}
                         alt="Rick and morty"
                         src={img}
                     />
+                </div>
+                <div>
+                    <CharactersFilter/>
                 </div>
                 {/*Body*/}
                 {
@@ -65,7 +65,8 @@ const Characters: React.FC = () => {
                 }
                 {/*Footer*/}
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                    <Pagination count={42} page={page} onChange={handleChange} color="primary" size="large"/>
+                    <Pagination count={totalPagesCount} page={page} onChange={handleChange} color="primary"
+                                size="large"/>
                 </div>
             </ThemeProvider>
         </Container>
